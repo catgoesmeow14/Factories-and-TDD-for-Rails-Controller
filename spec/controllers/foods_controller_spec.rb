@@ -90,6 +90,7 @@ describe FoodsController do
       end
     end
 
+    # create method with invalid food attributes
     context "with invalid attributes" do
       it "does not save the new food in the database" do
         expect{
@@ -104,17 +105,42 @@ describe FoodsController do
     end
   end
 
-  # update method
+  # update method and Testing PATCH Requests
   describe 'PATCH #update' do
-    context "with valid attributes" do
-      it "locates the requested @food"
-      it "changes @food's attributes"
-      it "redirects to the food"
+    before :each do
+      @food = create(:food)
     end
 
-    context "with invalid attributes" do
-      it "does not update the food in the database"
-      it "re-renders the :edit template"
+    context "with valid attributes" do
+      it "locates the requested @food" do
+        patch :update, params: { id: @food, food: attributes_for(:food) }
+        expect(assigns(:food)).to eq @food
+      end
+
+      it "changes @food's attributes" do
+        patch :update, params: { id: @food, food: attributes_for(:food, name: 'Nasi Uduk') }
+        @food.reload
+        expect(@food.name).to eq('Nasi Uduk')
+      end
+
+      it "redirects to the food" do
+        patch :update, params: { id: @food, food: attributes_for(:food) }
+        expect(response).to redirect_to @food
+      end
+    end
+
+    # PATCH requests, with invalid attributes
+    context 'with invalid attributes' do
+      it 'does not save the updated food in the database' do
+        patch :update, params: { id: @food, food: attributes_for(:invalid_food, name: 'Nasi Uduk', price: "Test") }
+        expect(@food.name).not_to eq('Nasi Uduk')
+      end
+
+      it 're-renders the edit template' do
+        patch :update, params: { id: @food, food: attributes_for(:invalid_food) }
+        expect(assigns(:food)).to eq @food
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
     end
   end
 
