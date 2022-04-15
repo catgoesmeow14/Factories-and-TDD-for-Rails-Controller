@@ -19,5 +19,9 @@ describe FoodsController do
     it "assigns the requested food to @food"
     it "renders the :show template"
   end
+
+  
+
+  
   
 end
