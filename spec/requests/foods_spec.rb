@@ -3,42 +3,42 @@ require 'rails_helper'
 RSpec.describe "Foods", type: :request do
   describe "GET /index" do
     it "returns http success" do
-      get "/food/index"
+      get "/foods/index"
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET /create" do
     it "returns http success" do
-      get "/food/create"
+      get "/foods/create"
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET /new" do
     it "returns http success" do
-      get "/food/new"
+      get "/foods/new"
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET /destroy" do
     it "returns http success" do
-      get "/food/destroy"
+      get "/foods/destroy"
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET /show" do
     it "returns http success" do
-      get "/food/show"
+      get "/foods/show"
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET /update" do
     it "returns http success" do
-      get "/food/update"
+      get "/foods/update"
       expect(response).to have_http_status(:success)
     end
   end
