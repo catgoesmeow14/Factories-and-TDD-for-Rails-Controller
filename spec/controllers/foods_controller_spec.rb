@@ -31,5 +31,18 @@ describe FoodsController do
     it "assigns the requested food to @food"
     it "renders the :edit template"
   end
+
+  # create method
+  describe 'POST #create' do
+    context "with valid attributes" do
+      it "saves the new food in the database"
+      it "redirects to foods#show"
+    end
+
+    context "with invalid attributes" do
+      it "does not save the new food in the database"
+      it "re-renders the :new template"
+    end
+  end
   
 end
