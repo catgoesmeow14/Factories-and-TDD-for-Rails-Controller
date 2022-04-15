@@ -44,5 +44,19 @@ describe FoodsController do
       it "re-renders the :new template"
     end
   end
+
+  # update method
+  describe 'PATCH #update' do
+    context "with valid attributes" do
+      it "locates the requested @food"
+      it "changes @food's attributes"
+      it "redirects to the food"
+    end
+
+    context "with invalid attributes" do
+      it "does not update the food in the database"
+      it "re-renders the :edit template"
+    end
+  end
   
 end
