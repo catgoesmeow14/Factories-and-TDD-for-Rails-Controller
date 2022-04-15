@@ -49,14 +49,30 @@ describe FoodsController do
 
   # new method
   describe 'GET #new' do
-    it "assigns a new Food to @food"
-    it "renders the :new template"
+    it "assigns a new Food to @food" do
+      get :new
+      expect(assigns(:food)).to be_a_new(Food)
+    end
+
+    it "renders the :new template" do
+      get :new
+      expect(:response).to render_template :new
+    end
   end
 
   # edit method
   describe 'GET #edit' do
-    it "assigns the requested food to @food"
-    it "renders the :edit template"
+    it "assigns the requested food to @food" do
+      food = create(:food)
+      get :edit, params: { id: food }
+      expect(assigns(:food)).to eq food
+    end
+
+    it "renders the :edit template" do
+      food = create(:food)
+      get :edit, params: { id: food }
+      expect(response).to render_template :edit
+    end
   end
 
   # create method
