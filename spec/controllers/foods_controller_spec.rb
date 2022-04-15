@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe FoodsController do
+  # index method
   describe 'GET #index' do
     context 'with params[:letter]' do
       it "populates an array of foods starting with the letter"
@@ -12,4 +13,11 @@ describe FoodsController do
       it "renders the :index template"
     end
   end
+
+  # show method
+  describe 'GET #show' do
+    it "assigns the requested food to @food"
+    it "renders the :show template"
+  end
+  
 end
