@@ -20,8 +20,16 @@ describe FoodsController do
     it "renders the :show template"
   end
 
-  
+  # new method
+  describe 'GET #new' do
+    it "assigns a new Food to @food"
+    it "renders the :new template"
+  end
 
-  
+  # edit method
+  describe 'GET #edit' do
+    it "assigns the requested food to @food"
+    it "renders the :edit template"
+  end
   
 end
