@@ -58,5 +58,11 @@ describe FoodsController do
       it "re-renders the :edit template"
     end
   end
+
+  # destroy method
+  describe 'DELETE #destroy' do
+    it "deletes the food from the database"
+    it "redirects to foods#index"
+  end
   
 end
